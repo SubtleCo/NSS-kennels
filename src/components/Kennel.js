@@ -4,6 +4,7 @@ import { CustomerCard } from "./customer/Customer"
 import { EmployeeCard } from "./employee/Employee"
 import "./Kennel.css"
 import { LocationCard } from "./location/Location"
+import { PropsAndState } from "./PropsAndState"
 export const Kennel = () => {
     return (
         <>
@@ -11,9 +12,10 @@ export const Kennel = () => {
             <small>Loving care when you're not there.</small>
             <address>
                 <div>Visit Us at the Nashville North Location</div>
-                <hr></hr>
                 <div>500 Puppy Way</div>
             </address>
+
+            <PropsAndState yourName={"Brenda"} />
 
             <h2>Animals</h2>
             <article className="animals">
