@@ -5,6 +5,8 @@ import { AnimalCard } from "./animal/AnimalCard"
 import { CustomerCard } from "./customer/Customer"
 import { LocationCard } from "./location/Location"
 import { EmployeeCard } from "./employee/Employee"
+import { AnimalContext, AnimalProvider } from "./animal/AnimalProvider"
+import { AnimalList } from "./animal/AnimalList"
 
 export const ApplicationViews = () => {
     return (
@@ -13,9 +15,11 @@ export const ApplicationViews = () => {
                 <Home />
             </Route>
 
-            <Route path="/animals">
-                <AnimalCard />
-            </Route>
+            <AnimalProvider>
+                <Route path="/animals">
+                    <AnimalList />
+                </Route>
+            </AnimalProvider>
 
             <Route path="/locations">
                 <LocationCard />
