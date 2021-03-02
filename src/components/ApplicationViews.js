@@ -10,6 +10,7 @@ import { EmployeeProvider } from "./employee/EmployeeProvider"
 import { EmployeeList } from "./employee/EmployeeList"
 import { LocationProvider } from "./location/LocationProvider"
 import { LocationList } from "./location/LocationList"
+import { LocationForm } from "./location/LocationForm"
 import { AnimalDetail } from "./animal/AnimalDetail"
 import { EmployeeDetail } from "./employee/EmployeeDetail"
 import { LocationDetail } from "./location/LocationDetail"
@@ -24,58 +25,56 @@ export const ApplicationViews = () => {
             <AnimalProvider>
                 <LocationProvider>
                     <CustomerProvider>
+                        <EmployeeProvider>
 
-                        <Route exact path="/animals">
-                            <AnimalList />
-                        </Route>
+                            <Route exact path="/animals">
+                                <AnimalList />
+                            </Route>
 
-                        <Route path="/animals/create">
-                            <AnimalForm />
-                        </Route>
-                       
-                        <Route path="/animals/edit/:animalId(\d+)">
-                            <AnimalForm />
-                        </Route>
+                            <Route path="/animals/create">
+                                <AnimalForm />
+                            </Route>
 
+                            <Route path="/animals/edit/:animalId(\d+)">
+                                <AnimalForm />
+                            </Route>
+
+                            <Route exact path="/animals/detail/:animalId(\d+)">
+                                <AnimalDetail />
+                            </Route>
+
+                            <Route exact path="/locations">
+                                <LocationList />
+                            </Route>
+
+                            <Route exact path="/locations/detail/:locationId(\d+)">
+                                <LocationDetail />
+                            </Route>
+
+                            <Route exact path="/locations/edit/:locationId(\d+)">
+                                <LocationForm />
+                            </Route>
+
+                            <Route path="/customers">
+                                <CustomerList />
+                            </Route>
+
+                            <Route exact path="/employees">
+                                <EmployeeList />
+                            </Route>
+
+                            <Route exact path="/employees/detail/:employeeId(\d+)">
+                                <EmployeeDetail />
+                            </Route>
+
+                        </EmployeeProvider>
                     </CustomerProvider>
                 </LocationProvider>
             </AnimalProvider>
 
-            <AnimalProvider>
-                <Route exact path="/animals/detail/:animalId(\d+)">
-                    <AnimalDetail />
-                </Route>
-            </AnimalProvider>
 
-            <LocationProvider>
 
-                <Route exact path="/locations">
-                    <LocationList />
-                </Route>
 
-                <Route exact path="/locations/detail/:locationId(\d+)">
-                    <LocationDetail />
-                </Route>
-
-            </LocationProvider>
-
-            <Route path="/customers">
-                <CustomerProvider>
-                    <CustomerList />
-                </CustomerProvider>
-            </Route>
-
-            <EmployeeProvider>
-
-                <Route exact path="/employees">
-                    <EmployeeList />
-                </Route>
-
-                <Route exact path="/employees/detail/:employeeId(\d+)">
-                    <EmployeeDetail />
-                </Route>
-
-            </EmployeeProvider>
         </>
     )
 }

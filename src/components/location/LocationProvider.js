@@ -13,7 +13,17 @@ export const LocationProvider = props => {
 
     const getLocationById = id => {
         return fetch(`http://localhost:8088/locations/${id}?_embed=employees&_embed=animals`)
-        .then(res => res.json())
+            .then(res => res.json())
+    }
+
+    const updateLocation = location => {
+        return fetch(`http://localhost:8088/locations/${location.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(location)
+        })
     }
 
     const addLocation = location => {
@@ -29,7 +39,7 @@ export const LocationProvider = props => {
 
     return (
         <LocationContext.Provider value={{
-            locations, getLocations, addLocation, getLocationById
+            locations, getLocations, addLocation, getLocationById, updateLocation
         }}>
             {props.children}
         </LocationContext.Provider>

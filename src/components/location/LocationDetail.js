@@ -29,6 +29,9 @@ export const LocationDetail = () => {
                     location.animals?.map(a => a.name).join(", ")
                 }
             </p>
+            <button onClick={() => {
+                history.push(`/locations/edit/${location.id}`)
+            }}>Edit</button>
         </section>
     )
 }
