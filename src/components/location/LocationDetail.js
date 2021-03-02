@@ -3,7 +3,7 @@ import { useHistory, useParams } from 'react-router-dom'
 import { LocationContext } from './LocationProvider'
 
 export const LocationDetail = () => {
-    const { getLocationById } = useContext(LocationContext)
+    const { getLocationById, deleteLocation } = useContext(LocationContext)
     const [location, setLocation] = useState({})
     const history = useHistory()
     const { locationId } = useParams()
@@ -12,6 +12,11 @@ export const LocationDetail = () => {
         getLocationById(locationId)
         .then(setLocation)
     }, [])
+
+    const handleDelete = () => {
+        deleteLocation(location.id)
+        .then(() => history.push(`/locations`))
+    }
 
     return (
         <section className="location">
@@ -29,6 +34,10 @@ export const LocationDetail = () => {
                     location.animals?.map(a => a.name).join(", ")
                 }
             </p>
+            <button onClick={() => {
+                history.push(`/locations/edit/${location.id}`)
+            }}>Edit</button>
+            {/* <button onClick={handleDelete}>Delete </button> */}
         </section>
     )
 }
