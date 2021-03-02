@@ -27,9 +27,27 @@ export const EmployeeProvider = props => {
             .then(getEmployees)
     }
 
+    const updateEmployee = employee => {
+        return fetch(`http://localhost:8088/employees/${employee.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(employee)
+        })
+            .then(getEmployees)
+    }
+
+    const deleteEmployee = id => {
+        return fetch(`http://localhost:8088/employees/${id}`, {
+            method: "DELETE"
+        })
+            .then(getEmployees)
+    }
+
     return (
         <EmployeeContext.Provider value={{
-            employees, getEmployees, addEmployee, getEmployeeById
+            employees, getEmployees, addEmployee, getEmployeeById, updateEmployee, deleteEmployee
         }}>
             {props.children}
         </EmployeeContext.Provider>
